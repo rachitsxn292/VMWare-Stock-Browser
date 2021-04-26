@@ -13,24 +13,30 @@ class View extends React.Component{
                 show: "",
                 moreData:[],
                 filterList:"",
-                display:"All"
+                display:"All",
+                filterItem:[]
 
             }
         }
     }
     
-    componentDidMount(){
-        const {email} = this.state;
-        axios.get('http://localhost:3001/viewStocks', {params: {email}})
+    componentDidMount = () => {
+        axios.get('http://localhost:3001/viewStocks')
         .then(res => {
             this.setState({
                 data: this.state.data.concat(res.data)
             })
         });
+        axios.get('http://localhost:3001/filterItem')
+        .then(res => {
+            this.setState({
+                filterItem: (res.data)
+            })
+        });
     }
 
-    filterData(e){
-        var filterVariable = e.target.innerHTML;
+    filterData = (e) => {
+        let filterVariable = e.target.innerHTML;
         this.setState({
             display: filterVariable
         })
@@ -44,12 +50,12 @@ class View extends React.Component{
         
     }
 
-    viewData(e){
+    viewData = (e) => {
        this.setState({
         show: e.target.innerHTML  
     })
 
-    var key = this.state.show;
+    let key = this.state.show;
     axios.get('http://localhost:3001/viewMoreData', {params: {key}})
     .then(res => {
         this.setState({
@@ -59,8 +65,8 @@ class View extends React.Component{
     });
 }
 
-    deleteData(index){
-        var data = [...this.state.data];
+    deleteData = (index) => {
+        let data = [...this.state.data];
         data.splice(index, 1);
         this.setState({data});
     }
@@ -80,7 +86,7 @@ class View extends React.Component{
 
             )
         })
-        var dropdown = new Array();
+        let dropdown = new Array();
         let details = this.state.data.map(stock => {
             dropdown.push(stock.Tag);
             return(
@@ -93,16 +99,23 @@ class View extends React.Component{
            
             )
         })
-        var setData = [...new Set(dropdown)]
+        let resultFilter = new Array();
+        let filterCall = this.state.filterItem.map(stock => {
+            resultFilter.push(stock.Tag);
+            return(
+                <p></p>
+            )
+        })
+        let setData = [...new Set(resultFilter)]
         setData.push("All");
-        var dropdownMenu = setData.map(stock => {
+        let dropdownMenu = setData.map(stock => {
             return(
                 <Dropdown.Item ><a href="#" onClick={this.filterData.bind(this)}>{stock}</a></Dropdown.Item>
+                
             )    
         })
 
         return (
-
             <div>
                <div className="Dropdown">
                 <h6>Tag Filter:</h6>
@@ -134,6 +147,7 @@ class View extends React.Component{
                         <p><i>***To add more records in the table redirect to:  "http://localhost:3000/add."</i></p>
                         <h1>Stock Details</h1>
                         {more}
+                        {filterCall}
                 </div>
             </div>
         );

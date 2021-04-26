@@ -53,28 +53,35 @@ app.post("/submitData",(req,res)=>{
 //Get Data
 app.get('/viewStocks', async(req, res) => {
   if(req.query.filterVariable==="All"){
-    var records = await StockSchema.find();
+    let records = await StockSchema.find();
     res.send(records);
     }
     if (req.query.filterVariable){
-      var filterVariable = req.query.filterVariable;
-      var query = {Tag:filterVariable}
-      var records = await StockSchema.find(query);
+      let filterVariable = req.query.filterVariable;
+      let query = {Tag:filterVariable}
+      let records = await StockSchema.find(query);
       res.send(records);
     }
    
     else{
-      var records = await StockSchema.find();
+      let records = await StockSchema.find();
       res.send(records);
     }
 })
 
 //Get More Data
 app.get('/viewMoreData', async(req, res) => {
-    var key = req.query.key;
-    var query={Symbol:key};
+    let key = req.query.key;
+    let query={Symbol:key};
     let records = await StockSchema.find(query);
     res.send(records);
+})
+
+//Filter More Item
+
+app.get('/filterItem', async(req, res) => {
+  let records = await StockSchema.find();
+  res.send(records);
 })
 
 //Server Running Port

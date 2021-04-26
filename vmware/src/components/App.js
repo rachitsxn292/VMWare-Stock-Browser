@@ -13,38 +13,38 @@ class App extends React.Component{
         }
     }
 
-    createSymbol(event)
+    createSymbol = (event) =>
     {
         this.setState({
             symbol:event.target.value
         })
     }
-    createName(event)
+    createName = (event) =>
     {
         this.setState({
             name:event.target.value
         })
     }
-    createlastPrice(event)
+    createlastPrice = (event) =>
     {
         this.setState({
             last_price:event.target.value
         })
     }
-    createTag(event)
+    createTag = (event) =>
     {
         this.setState({
             tag:event.target.value
         })
     }
-    createCap(event)
+    createCap = (event) =>
     {
         this.setState({
             cap:event.target.value
         })
     }
 
-    submitData(event)
+    submitData = (event) =>
     {
         
         axios.post('http://localhost:3001/submitData', {
