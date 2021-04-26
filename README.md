@@ -1,6 +1,6 @@
 
 
-#VMware Assignment: Stock Browser
+# VMware Assignment: Stock Browser
 
 Technologies Used:
 
