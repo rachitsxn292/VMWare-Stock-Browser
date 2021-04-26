@@ -61,5 +61,4 @@ Filter dropdown in populated by fetching all unique tags from the REST API’s a
                                 
 
 
-![image](https://user-images.githubusercontent.com/47805866/116134097-5d87b200-a684-11eb-9761-dc2ebef21760.png)
 
