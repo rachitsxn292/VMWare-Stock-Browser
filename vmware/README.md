@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# VMware Assignment: Stock Browser
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Technologies Used:
 
-## Available Scripts
+Frontend: React.JS, Bootstrap, HTML, CSS.
+Backend: Node.JS, Express.JS (REST API Server).
+Database: MongoDB Atlas.
 
-In the project directory, you can run:
+Running the Project:
+STEP 1:
+USING npm install INSTALL ALL DEPENDENCIES IN PACKAGE.JSON FILE.
 
-### `npm start`
+STEP 2(Starting Frontend):
+GO TO PATH FOLDER IN COMMAND PROMPT TYPE npm start FOR STARTING FRONT END
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+STEP 3 (Starting Backend):
+GO TO PATH FOLDER (vmware-> src -> server -> server.js->)I N COMMAND PROMPT TYPE node server.js this will start the server.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+Application Requirements:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+•	Insertion of Stocks by the user into Database (Extra Functionality).
+An extra route is created using MERN Stack. Which allows user to add New Stocks into the grid using REST CRUD Operations.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+The code for this functionality can be seen at:
+Frontend:  vmware-> src- > components-> Add.js
+Backend:   vmware-> src -> server -> server.js->(see Line 30 or search for comment “Post Data Into Schema”)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+•	Creation of Grid to show stocks:
+GET request is trigged using axios (npm package) when page loads for the first time. Data fetched using that GET request in displayed in table using ComponentDidMount lifecycle method:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The code for this functionality can be seen at:
+Frontend:  vmware-> src- > components-> View.js
+Backend:   vmware-> src -> server -> server.js->(see Line 53 or search for comment “Get Data”)
+ 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+•	Creation of container to show more details:
+A link is created on each symbol element in the table when the user clicks. A separate GET REST request is made to an API. Which fetches data and displays into separate container.
 
-### Code Splitting
+ 
+ 
+Fig: Screenshot of show details Component
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+•	Deletion of Records:
+When user click on particular elements in the actions table. The data gets deleted.
 
-### Analyzing the Bundle Size
+Frontend:  vmware-> src- > components-> View.js
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+ 
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+•	Filter:
+Filter dropdown in populated by fetching all unique tags from the REST API’s and when specific element in clicked on the dropdown an API request is made to fetch that particular item and at last grid is updated to show the filtered data.
+                                
+ 
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
