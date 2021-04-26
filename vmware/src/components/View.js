@@ -12,7 +12,8 @@ class View extends React.Component{
                 data:[],
                 show: "",
                 moreData:[],
-                filterList:""
+                filterList:"",
+                display:"All"
 
             }
         }
@@ -30,6 +31,9 @@ class View extends React.Component{
 
     filterData(e){
         var filterVariable = e.target.innerHTML;
+        this.setState({
+            display: filterVariable
+        })
         axios.get('http://localhost:3001/viewStocks', {params: {filterVariable}})
         .then(res => {
             this.setState({
@@ -101,15 +105,16 @@ class View extends React.Component{
 
             <div>
                <div className="Dropdown">
+                <h6>Tag Filter:</h6>
                 <Dropdown>
                         <Dropdown.Toggle variant="secondary" id="dropdown-basic">
-                            Filters
+                            {this.state.display}
                         </Dropdown.Toggle>
 
                         <Dropdown.Menu>
                             {dropdownMenu} 
                         </Dropdown.Menu>
-                    </Dropdown><br/>
+                    </Dropdown><br/><br/><br/>
                </div>
                 <div id="viewStocks">
                         <table  className="View Stocks" border="1|1">
