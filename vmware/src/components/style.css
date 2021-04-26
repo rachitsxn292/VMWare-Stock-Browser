@@ -1,0 +1,40 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+th{
+    background-color:	#787878; 
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.moreDetails{
+    border: 2px solid black;
+    display: flex;
+}
+
+p {
+    text-align: justify;
+    text-justify: inter-word;
+  }
+
+.left{
+    margin-left: 400px;
+}
+.Dropdown{
+  position: relative; 
+  top: 20px; 
+  left: 0px; 
+}
+.inputBox{
+  display: flex;
+}
